@@ -11,9 +11,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body class="bg-white dark:bg-gray-500">
+    <%= render 'layouts/application/header' %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
+    <%= render 'layouts/application/footer' %>
   </body>
 </html>
