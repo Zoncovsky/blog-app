@@ -6,6 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 gem 'bootsnap', require: false
+gem 'brakeman', '~> 6.1'
+gem 'bundler-audit', '~> 0.9.1'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder'
 gem 'jsbundling-rails'
@@ -15,6 +17,7 @@ gem 'rails', '7.1.3'
 gem 'redis', '~> 4.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'tailwindcss-rails', '~> 2.3'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -40,5 +43,3 @@ group :test do
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
 end
-
-gem "tailwindcss-rails", "~> 2.3"

@@ -1,0 +1,31 @@
+name: Security check
+on: push
+
+jobs:
+  bundler_audit:
+    name: Bundler-Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run Bundler-Audit
+        run: bundle exec bundle-audit check --update
+
+  brakeman:
+    name: Brakeman
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Brakeman
+        uses: artplan1/brakeman-action@v1.2.1
+        with:
+          flags: "-w2"
