@@ -1,0 +1,49 @@
+<%= form_with(model: [:system, user], class: 'contents') do |f| %>
+  <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="py-8 px-4 mx-auto max-w-2xl">
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="sm:col-span-2">
+          <%= f.label :first_name, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :first_name, placeholder: 'First Name', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+        <div class="sm:col-span-2">
+          <%= f.label :last_name, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :last_name, placeholder: 'Last Name', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+        <div class="sm:col-span-2">
+          <%= f.label :nickname, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :nickname, placeholder: 'Nickname', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+        <div class="sm:col-span-2">
+          <%= f.label :email, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :email, placeholder: 'Email', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+        <div class="w-full">
+          <%= f.label :password, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :password, placeholder: 'Password', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+        <div class="w-full">
+          <%= f.label :password_confirmation, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :password_confirmation, placeholder: 'Password Confirmation', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+        <div class="w-full">
+          <%= f.label :phone_number, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :phone_number, placeholder: 'Phone Number', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500' %>
+        </div>
+        <div class="w-full">
+          <%= f.label :role, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.select :role, User.role.values, {}, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
+        </div>
+        <div class="sm:col-span-2">
+          <% if @user.avatar.present? %>
+            <%= image_tag @user.avatar, class: 'w-20 h-20 object-cover rounded-md mt-1' %>
+          <% end %>
+          <%= f.label :avatar, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.file_field :avatar, class: 'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400' %>
+        </div>
+      </div>
+      <%= f.submit class: 'inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800' %>
+      <%= link_to 'Back', system_user_path(user), class: 'inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800' %>
+    </div>
+  </div>
+<% end %>

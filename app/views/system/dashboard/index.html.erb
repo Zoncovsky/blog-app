@@ -1,0 +1,28 @@
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+    <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Admin Dashboard</h2>
+      <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Graphs with main metrics</p>
+    </div>
+    <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+      <div class="items-center bg-gray-50 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="text-center">
+          <%= line_chart User.group_by_day(:created_at).count , colors: ["#b00", "#666"], refresh: 600 %>
+          <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Number of users who recently registered</p>
+        </div>
+      </div>
+      <div class="items-center bg-gray-50 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="text-center">
+          <%= pie_chart User.group(:role).count, donut: true %>
+          <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Users by role</p>
+        </div>
+      </div>
+      <div class="items-center bg-gray-50 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="text-center">
+          <%= column_chart User.group_by_hour_of_day(:last_sign_in_at, format: "%l %P").count %>
+          <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Time when users are more active</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

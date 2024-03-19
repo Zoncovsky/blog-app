@@ -4,6 +4,8 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
+    "chart.js": "^4.4.2",
+    "chartkick": "^5.0.1",
     "esbuild": "^0.20.2",
     "flowbite": "^2.3.0",
     "flowbite-datepicker": "^1.2.6"

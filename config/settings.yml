@@ -1,0 +1,6 @@
+google:
+  client_id: '<%= ENV["GOOGLE_CLIENT_ID"] %>'
+  secret: '<%= ENV["GOOGLE_CLIENT_SECRET"] %>'
+github:
+  client_id: '<%= ENV["GITHUB_CLIENT_ID"] %>'
+  secret: '<%= ENV["GITHUB_SECRET"] %>'
