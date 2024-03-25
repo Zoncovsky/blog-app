@@ -14,7 +14,7 @@ module System
 
       flash[:error] = 'You do not have permission to go to administrative pages!'
 
-      redirect_to authenticated_root_path
+      redirect_to main_posts_path
     end
   end
 end

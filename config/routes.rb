@@ -10,15 +10,27 @@ Rails.application.routes.draw do
       root to: 'system/dashboard#index', as: :admin_root
     end
 
-    root to: 'main/home#index', as: :authenticated_root
+    root to: 'main/posts#index'
   end
 
   namespace :system do
     resources :users
+    resources :posts do
+      member do
+        put 'post_published'
+        put 'cancel'
+      end
+    end
   end
 
   namespace :main do
     resources :users, except: %i[index create new]
+    resources :posts do
+      member do
+        put 'post_published'
+        put 'cancel'
+      end
+    end
   end
 
   devise_for :users, path: 'auth', controllers: {

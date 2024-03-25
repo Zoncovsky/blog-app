@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
-class UserPolicy < ApplicationPolicy
+class UserPolicy < ResourcePolicy
   def index?
     admin?
   end
 
   def show?
     owner? || admin?
+  end
+
+  def edit?
+    update?
   end
 
   def update?

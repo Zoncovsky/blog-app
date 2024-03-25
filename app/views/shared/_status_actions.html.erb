@@ -1,0 +1,6 @@
+<% if @post.may_make_published? %>
+  <%= button_to 'Post publish', { controller: "#{namespace}/posts", action: :post_published, id: @post }, method: :put, class: 'underline' %>
+<% end %>
+<% if @post.may_cancel? %>
+  <%= button_to 'Post cancel', { controller: "#{namespace}/posts", action: :cancel, id: @post }, method: :put, class: 'underline' %>
+<% end %>

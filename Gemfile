@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'aasm'
 gem 'bootsnap', require: false
 gem 'brakeman', '~> 6.1'
 gem 'bundler-audit', '~> 0.9.1'
@@ -12,6 +13,7 @@ gem 'chartkick'
 gem 'config'
 gem 'devise', '~> 4.9'
 gem 'enumerize'
+gem 'fasterer', '~> 0.11.0'
 gem 'groupdate'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder'

@@ -5,6 +5,8 @@ require 'open-uri'
 class User < ApplicationRecord
   extend Enumerize
 
+  has_many :posts
+
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [300, 300]
   end

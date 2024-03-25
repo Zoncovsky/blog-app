@@ -2,8 +2,6 @@
 
 module System
   class UsersController < ApplicationController
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
     before_action :set_user, only: %i[show edit update destroy]
 
     def index
@@ -67,16 +65,6 @@ module System
 
     def user_params
       params.require(:user).permit(policy(User).admin_permitted_attributes)
-    end
-
-    def default_sorts
-      ['position asc']
-    end
-
-    def user_not_authorized
-      flash[:alert] = 'Action for administrators only'
-
-      redirect_back(fallback_location: admin_root_path)
     end
   end
 end

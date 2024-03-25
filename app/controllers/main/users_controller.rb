@@ -10,10 +10,12 @@ module Main
       @user = User.find(params[:id])
     end
 
-    def edit; end
+    def edit
+      authorize @user, :edit?
+    end
 
     def update
-      authorize @user, :show?
+      authorize @user, :update?
 
       respond_to do |format|
         if @user.update(user_params)

@@ -48,14 +48,4 @@ class ApplicationPolicy
       scope.all
     end
   end
-
-  protected
-
-  def owner?
-    user == record&.try(:user)
-  end
-
-  def admin?
-    user.admin?
-  end
 end
