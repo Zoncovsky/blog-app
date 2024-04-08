@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [300, 300]
+    attachable.variant :min, resize_to_limit: [200, 200]
   end
 
   validates :first_name,

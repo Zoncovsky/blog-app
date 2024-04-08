@@ -12,33 +12,29 @@
         <p class="mt-3 font-normal text-gray-700 dark:text-gray-400"><%= @post.note %></p>
       </div>
       <div class="px-4 py-3 flex items-center justify-between">
-        <%= render partial: 'shared/status_actions', locals: { post: @post, namespace: params[:controller].split('/').first } %>
-         <button id="<%= @post.id %>-button" data-dropdown-toggle="<%= @post.id %>"
-          class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-          type="button">
-          <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-          </svg>
-        </button>
-        <div id="<%= @post.id %>"
-          class="hidden z-10 w-22 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="<%= @post.id %>-button">
-            <li>
-              <%= link_to 'Edit', edit_main_post_path(@post), class: 'block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' %>
-            </li>
-            <hr>
-            <li>
-              <%= button_to 'Destroy', main_post_path(@post), method: :delete, class: 'block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' %>
-            </li>
-            <hr>
-            <li>
-              <%= link_to 'Back', main_posts_path, class: 'block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' %>
-            </li>
-          </ul>
-        </div>
+        <% if current_user.id == @post.user_id %>
+          <%= render partial: 'shared/status_actions', locals: { post: @post, namespace: params[:controller].split('/').first } %>
+          <button id="<%= @post.id %>-button" data-dropdown-toggle="<%= @post.id %>" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
+            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+            </svg>
+          </button>
+          <div id="<%= @post.id %>" class="hidden z-10 w-22 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="<%= @post.id %>-button">
+              <li>
+                <%= link_to 'Edit', edit_main_post_path(@post), class: 'block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' %>
+              </li>
+              <hr>
+              <li>
+                <%= button_to 'Destroy', main_post_path(@post), method: :delete, class: 'block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' %>
+              </li>
+              <hr>
+              <li>
+                <%= link_to 'Back', main_posts_path, class: 'block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

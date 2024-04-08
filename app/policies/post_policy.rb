@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class PostPolicy < ResourcePolicy
-  def show?
-    admin? || owner?
+  def edit?
+    update?
   end
 
   def update?

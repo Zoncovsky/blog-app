@@ -5,9 +5,8 @@ module Main
     before_action :set_user, only: %i[show edit update destroy]
 
     def show
-      authorize @user, :show?
-
       @user = User.find(params[:id])
+      @post = Post.where(user_id: @user)
     end
 
     def edit

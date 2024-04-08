@@ -5,10 +5,6 @@ class UserPolicy < ResourcePolicy
     admin?
   end
 
-  def show?
-    owner? || admin?
-  end
-
   def edit?
     update?
   end

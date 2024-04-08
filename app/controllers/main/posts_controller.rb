@@ -2,7 +2,7 @@
 
 module Main
   class PostsController < Main::ApplicationController
-    before_action :set_post, only: %i[show edit update destroy]
+    before_action :set_post, only: %i[show edit update destroy post_published cancel]
 
     def index
       @pagy, @posts = pagy_countless(Post.published_or_pending_for_user(current_user.id).order(created_at: :desc), items: 10)
@@ -10,15 +10,15 @@ module Main
       render 'scrollable_list' if params[:page]
     end
 
-    def show
-      authorize @post, :show?
-    end
+    def show; end
 
     def new
       @post = current_user.posts.build
     end
 
-    def edit; end
+    def edit
+      authorize @post, :edit?
+    end
 
     def create
       @post = current_user.posts.build(post_params)
@@ -60,6 +60,8 @@ module Main
     end
 
     def post_published
+      authorize @post, :update?
+
       @post = Post.find(params[:id])
 
       @post.make_published!
@@ -68,6 +70,8 @@ module Main
     end
 
     def cancel
+      authorize @post, :update?
+
       @post = Post.find(params[:id])
 
       @post.cancel!

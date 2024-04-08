@@ -1,11 +1,15 @@
 <div class="w-full">
   <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-    <div class="flex justify-between items-center">
-      <%= link_to 'New post', new_main_post_path, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium' %>
+    <div class="flex justify-center items-center">
+      <%= link_to 'New Post', new_main_post_path, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium',
+        data: {turbo_frame: dom_id(Post.new)} %>
+    </div>
+    <div class="flex justify-center items-center">
+      <%= turbo_frame_tag Post.new %>
     </div>
 
     <div class="flex justify-center items-center">
-      <div id="posts" class="max-w-md p-4">
+      <div id="posts" class="grid grid-cols-1 gap-2 m-4">
         <%= render partial: 'post', collection: @posts %>
         <%= render partial: 'next_page' %>
       </div>
