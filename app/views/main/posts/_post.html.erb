@@ -10,8 +10,14 @@
     <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= post.user&.display_name %></h5>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">@<%= post.user.nickname %></p>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= post.note %></p>
+    <% if post.selling? %>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= post.price %>$</p>
+      <div class="max-w-sm">
+        <button type="button" class="px-3 py-2 text-xs font-medium text-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
+      </div>
+    <% end %>
     <% if post.may_make_published? %>
-      <%= button_to 'Publish', post_published_main_post_path(post), method: :put, class: 'underline' %>
+      <%= button_to 'Publish', post_published_main_post_path(post), method: :put, class: 'underline dark:text-white' %>
     <% end %>
   </div>
 <% end %>

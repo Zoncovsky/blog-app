@@ -15,9 +15,11 @@ class PostPolicy < ResourcePolicy
 
   def permitted_attributes
     %i[
-      note
-      status
       images
+      note
+      post_type
+      price
+      status
       user_id
     ]
   end

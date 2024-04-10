@@ -45,6 +45,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rails_live_reload'
   gem 'rubocop'
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
